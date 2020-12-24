@@ -94,7 +94,7 @@ type D = P | Q;
             parse() {
               res = cumin(this.input);
               if (res[0]) {
-                this.result = res[1];
+                this.result = JSON.stringify(res[1], null, "\t");
                 this.err = "";
               } else {
                 this.err = res[1];
