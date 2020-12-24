@@ -1,0 +1,14 @@
+{
+  "name": "cumin",
+  "collaborators": [
+    "cympfh <cympfh@gmail.com>"
+  ],
+  "version": "0.9.8",
+  "files": [
+    "cumin_bg.wasm",
+    "cumin.js",
+    "cumin.d.ts"
+  ],
+  "browser": "cumin.js",
+  "types": "cumin.d.ts"
+}

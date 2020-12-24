@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello cumin.wasm!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src='./pkg/cumin.js'></script>
+    <script>
+      var cumin = function(input) {
+        console.error("wasm not loaded!?");
+        return null;
+      }
+      const { load } = wasm_bindgen;
+      async function run() {
+        await wasm_bindgen('./pkg/cumin_bg.wasm');
+        cumin = function(input) {
+          var result = load(input);
+          try {
+            return [true, JSON.parse(result)];
+          } catch(e) {
+            return [false, result];
+          }
+        };
+        console.log("wasm loaded");
+      }
+      run();
+    </script>
+<style>
+.textarea {
+  height: 400px;
+}
+</style>
+  </head>
+  <body>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <!-- <script src="./bootstrap.js"></script> -->
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Try Cumin Online</h1>
+
+        <div class="container" id="tco">
+          <div class="columns">
+            <div class="column">
+              <div class="control">
+                <textarea class="textarea is-primary is-medium" placeholder="Primary textarea"
+                  v-model="input"
+                  v-on:change="parse"
+                  v-on:keyup="parse"
+                ></textarea>
+              </div>
+            </div>
+            <div class="column">
+              <div class="control">
+                <textarea class="textarea is-warning is-normal" placeholder="Primary textarea" readonly>{{ result }}</textarea>
+              </div>
+            </div>
+          </div>
+          <div>{{err}}</div>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      var tco;
+      window.addEventListener("load", () => {
+        tco = new Vue({
+          el: "#tco",
+          data: {
+            input: "// Cumin here\n\nstruct P { x: Int, y: Int }\nlet p = P(0, 0);\n[p, P(1, 2), P(3, 4)]",
+            result: "// JSON here",
+            err: "",
+          },
+          methods: {
+            parse() {
+              res = cumin(this.input);
+              if (res[0]) {
+                this.result = res[1];
+                this.err = "";
+              } else {
+                this.err = res[1];
+              }
+            }
+          }
+        });
+        tco.parse();
+      });
+    </script>
+
+  </body>
+</html>
+
