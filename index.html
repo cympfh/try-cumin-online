@@ -73,7 +73,15 @@
         tco = new Vue({
           el: "#tco",
           data: {
-            input: "// Cumin here\n\nstruct P { x: Int, y: Int }\nlet p = P(0, 0);\n[p, P(1, 2), P(3, 4)]",
+            input: `// Cumin here
+
+struct P { x: Int, y: Int }
+let p = P(0, 1 + 2);
+
+struct Q { msg: String }
+type D = P | Q;
+
+[D(p), D.Q("Hello")]`,
             result: "// JSON here",
             err: "Wasm Loading...",
           },
