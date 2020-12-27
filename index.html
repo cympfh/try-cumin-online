@@ -90,26 +90,50 @@ type D = P | Q;
             result: "// JSON here",
             err: "Wasm Loading...",
           },
+          created: function() {
+            this.load_from_hash();
+          },
           methods: {
             parse() {
-              res = cumin(this.input);
-              if (res[0]) {
-                this.result = JSON.stringify(res[1], null, "\t");
-                this.err = "";
-              } else {
-                this.err = res[1];
+              var that = this;
+              function doparse() {
+                res = cumin(that.input);
+                if (res[0]) {
+                  that.result = JSON.stringify(res[1], null, "\t");
+                  that.err = "";
+                } else {
+                  that.err = res[1];
+                }
               }
+              function wait() {
+                if (!ready) {
+                  setTimeout(wait, 100);
+                } else {
+                  doparse();
+                }
+              }
+              wait();
+            },
+            load_from_hash() {
+              var code = location.hash.slice(1);
+              if (code) {
+                try {
+                  this.input = atob(code);
+                  this.parse();
+                } catch(err) {
+                  // failed
+                  console.error(err);
+                  //location.hash = "";
+                }
+              }
+              this.parse();
             }
           }
         });
-        function fuck_wasm() {
-          if (ready) {
-            tco.parse();
-          } else {
-            setTimeout(fuck_wasm, 100);
-          }
-        }
-        fuck_wasm();
+      });
+
+      window.addEventListener("hashchange", () => {
+        tco.load_from_hash();
       });
     </script>
 
