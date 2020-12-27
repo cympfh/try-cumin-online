@@ -56,17 +56,21 @@
           <div class="columns">
             <div class="column">
               <div class="control">
-                <textarea class="textarea is-primary is-medium" placeholder="Primary textarea"
+                <textarea class="textarea is-medium"
                   v-model="input"
                   v-on:change="parse"
                   v-on:keyup="parse"
                 ></textarea>
               </div>
               <div class="control">
-                <button class="button is-link is-light is-small"
+                <button class="button is-warning is-light is-small"
                   v-on:click="share"
-                  ><i class="fas fa-share-square"></i> Share Code</button>
-                <div>{{err}}</div>
+                ><i class="fas fa-share-square"></i>&nbsp; Share Code</button>
+                <a class="button is-link is-light is-small"
+                  href="http://cympfh.cc/cumin/"
+                  target="_blank"
+                > <i class="fas fa-book"></i>&nbsp; Learn Cumin</a>
+                <div class="container"><div class="notification is-info is-light">{{console}}</div></div>
               </div>
             </div>
             <div class="column">
@@ -77,11 +81,6 @@
           </div>
         </div>
 
-      </div>
-      <div class="container">
-          <span class="subtitle">
-            <a href="http://cympfh.cc/cumin/"> <i class="fas fa-book"></i> Learn Cumin</a>
-          </span>
       </div>
     </section>
 
@@ -101,7 +100,7 @@ type D = P | Q;
 
 [D(p), D.Q("Hello")]`,
             result: "// JSON here",
-            err: "Wasm Loading...",
+            console: "Wasm Loading...",
           },
           created: function() {
             this.load_from_hash();
@@ -113,9 +112,9 @@ type D = P | Q;
                 res = cumin(that.input);
                 if (res[0]) {
                   that.result = JSON.stringify(res[1], null, "\t");
-                  that.err = "";
+                  that.console = "Success";
                 } else {
-                  that.err = res[1];
+                  that.console = res[1];
                 }
               }
               function wait() {
@@ -147,7 +146,7 @@ type D = P | Q;
               tmp.select();
               document.execCommand("copy");
               tmp.remove();
-              this.err = "URL copied!";
+              this.console = "URL copied!";
             }
           }
         });
