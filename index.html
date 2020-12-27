@@ -9,6 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src='./pkg/cumin.js'></script>
     <script>
+      function encodeBase64(text) {
+        return btoa(unescape(encodeURIComponent(text)));
+      }
+      function decodeBase64(code) {
+        return decodeURIComponent(escape(atob(code)));
+      }
+    </script>
+    <script>
       var ready = false;
       var cumin = function(input) {
         console.error("wasm not loaded!?");
@@ -123,7 +131,7 @@ type D = P | Q;
               var code = location.hash.slice(1);
               if (code) {
                 try {
-                  this.input = atob(code);
+                  this.input = decodeBase64(code);
                   this.parse();
                 } catch(err) {
                   console.error(err);
@@ -132,7 +140,7 @@ type D = P | Q;
               this.parse();
             },
             share() {
-              location.hash = "#" + btoa(this.input);
+              location.hash = "#" + encodeBase64(this.input);
               var tmp = document.createElement("input");
               document.body.appendChild(tmp);
               tmp.value = location.href;
