@@ -50,7 +50,7 @@
 
     <section class="section">
       <div class="container">
-        <h1 class="title">Try Cumin Online</h1>
+        <h1 class="title">Try Cumin Online <i class="fas fa-leaf"></i></h1>
 
         <div class="container" id="tco">
           <div class="columns">
@@ -92,13 +92,18 @@
           data: {
             input: `// Cumin here
 
-struct P { x: Int, y: Int }
-let p = P(0, 1 + 2);
+// Def of P.
+struct P { x: Int, y: Int = 0 }
 
-struct Q { msg: String }
-type D = P | Q;
+// P variables.
+let p = P(1);  // (1, 0)
+let q = P(2, 1);
 
-[D(p), D.Q("Hello")]`,
+// Function: Int -> P
+let diagonal(x: Int) = P(x, x);
+
+// List of P
+[p, q, diagonal(10)]`,
             result: "// JSON here",
             console: "Wasm Loading...",
           },
