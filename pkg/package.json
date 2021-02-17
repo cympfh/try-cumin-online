@@ -4,7 +4,7 @@
     "cympfh <cympfh@gmail.com>"
   ],
   "description": "Cumin, Configuration Language",
-  "version": "0.9.9",
+  "version": "0.9.10",
   "license": "MIT",
   "files": [
     "cumin_bg.wasm",
