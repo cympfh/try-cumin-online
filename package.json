@@ -1,0 +1,28 @@
+{
+  "name": "frontend-template",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "npx next",
+    "build": "npx next build",
+    "start": "npx next start",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "bulma": "^0.9.3",
+    "next": "11.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.35.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "typescript": "4.3.4"
+  },
+  "license": "ISC"
+}
