@@ -1,14 +1,17 @@
-/* tslint:disable */
-/* eslint-disable */
-/**
-* @param {string} input
-* @returns {string}
-*/
-export function load(input: string): string;
+declare namespace wasm_bindgen {
+	/* tslint:disable */
+	/* eslint-disable */
+	/**
+	* @param {string} input
+	* @returns {string}
+	*/
+	export function load(input: string): string;
+	
+}
 
-export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
+declare type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
-export interface InitOutput {
+declare interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly load: (a: number, b: number, c: number) => void;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
@@ -25,5 +28,4 @@ export interface InitOutput {
 *
 * @returns {Promise<InitOutput>}
 */
-export default function init (module_or_path?: InitInput | Promise<InitInput>): Promise<InitOutput>;
-        
+declare function wasm_bindgen (module_or_path?: InitInput | Promise<InitInput>): Promise<InitOutput>;

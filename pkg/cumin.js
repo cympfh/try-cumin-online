@@ -102,7 +102,6 @@ let wasm_bindgen;
 
     async function load(module, imports) {
         if (typeof Response === 'function' && module instanceof Response) {
-
             if (typeof WebAssembly.instantiateStreaming === 'function') {
                 try {
                     return await WebAssembly.instantiateStreaming(module, imports);
@@ -121,7 +120,6 @@ let wasm_bindgen;
             return await WebAssembly.instantiate(bytes, imports);
 
         } else {
-
             const instance = await WebAssembly.instantiate(module, imports);
 
             if (instance instanceof WebAssembly.Instance) {
@@ -149,6 +147,8 @@ let wasm_bindgen;
         if (typeof input === 'string' || (typeof Request === 'function' && input instanceof Request) || (typeof URL === 'function' && input instanceof URL)) {
             input = fetch(input);
         }
+
+
 
         const { instance, module } = await load(await input, imports);
 

@@ -1,8 +1,19 @@
-# cumin 🌿
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/2749629/108620455-ad24e400-746f-11eb-85b9-dfec1b8f8457.png" alt="Cumin" />
+</p>
 
-is a Structured Typed Configuration Language.
+<p align="center">
+    <a href="https://crates.io/crates/cumin"><img src="https://img.shields.io/crates/v/cumin.svg" alt="crates.io" /></a>
+    <a href="https://github.com/cympfh/cumin/actions"><img src="https://github.com/cympfh/cumin/workflows/test/badge.svg" /></a>
+    <a href="https://github.com/cympfh/cumin/blob/main/LICENSE"><img src="https://img.shields.io/crates/l/cumin.svg" /></a>
+</p>
 
-Document is [Here](https://cympfh.cc/cumin).
+Cumin is a Structured, Typed and Mini-Programmable Configuration Language.
+
+## Documents
+
+- [cympfh.cc/cumin, English](https://cympfh.cc/cumin)
+- [v0.9.10 マニュアル, 日本語](https://zenn.dev/cympfh/books/cumin-book-v0910)
 
 ## Features
 
