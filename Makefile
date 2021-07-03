@@ -2,9 +2,9 @@ dev:
 	npm run dev
 
 build:
-	rm -rf docs
 	npm run build
-	mv public docs
+	rm -rf docs
+	cp -R public docs
 
 test:
 	npm run check
