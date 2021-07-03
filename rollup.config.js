@@ -94,7 +94,7 @@ export default {
     // for wasm
     rust({
       verbose: true,
-      serverPath: "/build/",
+      serverPath: "./build/",
     }),
   ],
   watch: {
