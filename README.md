@@ -1,14 +1,20 @@
-# try-cumin-online
+# Try Cumin Online 🌿
 
-Static Web Page for trying cumin.
+This `cumin` works as wasm on you browser.
 
-## Build
+Check [cympfh.cc/try-cumin-online](https://cympfh.cc/try-cumin-online/).
 
-- path/cumin/
-    - `wasm` branch
-    - `make wasm`
-- path/try-cumin-online/
-    - You are Here
-    - `make build`
-    - `docs/` are published; dont remove any files in it
-        - `make serve` and browse `http://localhost:5000/`
+### memo for @cympfh
+
+#### ビルド・アップデート方法
+
+`$GIT_ROOT/cumin` に cympfh/cumin があり,
+`$GIT_ROOT/try-cumin-online` にこれがあるとする.
+後者をカレントディレクトリにして,
+
+```bash
+$ make build          # ../cumin をターゲットにした wasm ビルドを含む
+$ vim src/version.ts  # バージョンを合わせる
+```
+
+を実行. `make serve` で動作確認.
